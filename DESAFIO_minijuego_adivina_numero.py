@@ -1,5 +1,7 @@
-def run():
-    import random
+import random
+
+
+def run():    
     print('Minijuego: Tienes 5 oportunidades para adivinar un número al azar entre 1 y 10.')        
     oportunidades = 5
     respuesta = random.randint(1, 10)
