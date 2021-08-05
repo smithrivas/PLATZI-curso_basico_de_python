@@ -1,0 +1,259 @@
+RECURSIVIDAD
+Algoritmica: Una forma de crear soluciones utilizando el principio de "Divide y venceras"
+Programatica: Una técnica mediante la cual una función se llama a sí misma
+
+Los algoritmos recursivos deben obedecer tres leyes importantes:
+-Un algoritmo recursivo debe tener un caso base.
+-Un algoritmo recursivo debe cambiar su estado y moverse hacia el caso base.
+-Un algoritmo recursivo debe llamarse a sí mismo, recursivamente.
+
+Funciones como objetos
+Una de las características más poderosas de Python es que todo es un objeto, incluyendo las funciones. Las funciones en Python son “ciudadanos de primera clase”.
+
+Esto, en sentido amplio, significa que en Python las funciones:
+
+Tienen un tipo
+Se pueden pasar como argumentos de otras funciones
+Se pueden utilizar en expresiones
+Se pueden incluir en varias estructuras de datos (como listas, tuplas,
+diccionarios, etc.)
+Argumentos de otras funciones
+Hasta ahora hemos visto que las funciones pueden recibir parámetros para realizar los cómputos que definen. Algunos de los tipos que hemos pasado son tipos simples como cadenas, números, listas, etc. Sin embargo, también pueden recibir funciones para crear abstracciones más poderosas. Veamos un ejemplo:
+
+def multiplicar_por_dos(n):
+    return n * 2
+
+def sumar_dos(n):
+    return n + 2
+
+def aplicar_operacion(f, numeros):
+    resultados = []
+    for numero in numeros:
+        resultado = f(numero)
+        resultados.append(resultado)
+
+>>> nums = [1, 2, 3]
+>>> aplicar_operacion(multiplicar_por_dos, nums)
+[2, 4, 6]
+
+>>> aplicar_operacion(sumar_dos, nums)
+[3, 4, 5]
+Funciones en expresiones
+Una forma de definir una función en una expresión es utilizando el keyword lambda. lambda tiene la siguiente sintaxis: lambda <vars>: <expresion>.
+
+Otro ejemplo interesante es que las funciones se pueden utilizar en una expresión directamente. Esto es posible ya que como lo hemos platicado con anterioridad, en Python las variables son simplemente nombres que apuntan a un objeto (en este caso a una función). Por ejemplo:
+
+sumar = lambda x, y: x + y
+
+>>> sumar(2, 3)
+5
+Funciones en estructuras de datos
+Las funciones también se pueden incluir en diversas estructuras que las permiten almacenar. Por ejemplo, una lista puede guardar diversas funciones a aplicar o un diccionario las puede almacenar como valores.
+
+def aplicar_operaciones(num):
+    operaciones = [abs, float]
+
+    resultado = []
+    for operacion in operaciones:
+        resultado.append(operacion(num))
+
+    return resultado
+
+>>> aplicar_operaciones(-2)
+[2, -2.0]
+Como pudimos ver, las funciones son objetos muy versátiles que nos permiten tratarlas de diversas maneras y que nos permiten añadir capas adicionales de abstracción a nuestro programa.
+
+-----------------------------
+
+TUPLAS
+-Secuencias inmutables de objetos
+-Puede contener cualquier tipo de datos
+-Puede utilizarse para devolver varios valores en una función
+
+*Se puede sumar otra tupla o reasignar, pero no modificar los datos que ya contiene
+
+tuple_name = ('first_value', 2, 'u_can_add_ints')
+tupla = ()
+*Si se crea de un solo valor debe contener coma EJEMPLO: my_tuple = (1,)
+lista = []
+
+Desempaquetar una tupla
+my_tuple = (1,2,3)
+x, y, z = my_tuple
+
+
+RANGOS
+-Representan una secuencia de enteros
+-range(comienzo,fin,pasos)
+-Al igual que las cadenas y las tuplas, los rangos son inmutables
+-Muy eficientes en uso de memoria y normalmente utilizados en for loops
+
+my_range = (0, 7, 2)
+my_other_range = (0, 8, 2)
+my_range == my_other_range
+*Es true por que los valores resultantes son los mismos,como objeto si es diferente
+
+for i in range(1, 100, 2):
+    print(i)
+
+LISTAS Y MUTABILIDAD
+-Son secuencias de objetos pero si son inmutables
+-Cuando se modifica una lista, puede exisitir efectos secundarios(side effects)
+-Es posible iterar con ellos
+Asignacion:
+my_list[0] = 5
+Utilizar metodos de la lista(append, pop, remove, insert, etc)
+
+Declaracion
+lista = []
+lista = list()
+
+my_list[1:]
+
+Append
+my_list.append(4) = Se agrega un nuevo elemento a la lista
+Pop
+my_list.pop() = Elimina el último elemento de la lista
+
+Se pueden recorrer con ciclo for
+for element in my_list:
+	print(element)
+
+CLONACION
+-Casi siempre es mejor clonar una lista en vez de mutarla
+-Para clonar una lista podemos utilizar rebanadas(slices) o la funcion list
+
+c = list(a)
+c = a[::]
+
+LIST COMPREHESION
+-Es una forma concisa de aplicar operaciones a los valores de una secuencia
+-También se pueden aplicar condiciones para filtrar
+
+my_list = list(range(100))
+
+Doblar valores
+double = [i*2 for i in my_list]
+
+pares = [i for i in my_list if i % 2 == 0]
+
+Los nuevos que encontré además de los de la clase:
+
+lista.extend(iterable) #extiende la lista con valores dentro de un iterable como un range()
+lista.insert(i, ‘valor’) #Agrega un valor en la posición i y recorre todos los demás. No borra nada.
+lista.pop(i) #Elimina valor en la posición i de la lista.
+lista.remove(‘valor’) #Elimina el primer elemento con ese valor.
+lista.clear() #Borra elementos en la lista.
+lista.index(‘valor’) #Retorna posición del primer elemento con el valor.
+lista.index(‘valor’, start, end) #Retorna posición del elemento con el valor dentro de los elementos desde posición start hasta posición end)
+lista.count(‘valor’) #Cuenta cuántas veces esta ese valor en la lista.
+lista.sort() #Ordena los elementos de mayor a menor.
+lista.sort(reverse = True) #Ordena los elementos de menor a mayor.
+lista.reverse() #Invierte los elementos
+lista.copy() #Genera una copia de la lista. También útil para clonar listas.
+
+
+DICCIONARIOS
+-Son como listas, pero en lugar de usar indices utilizan llaves
+-No tienen orden interno
+-Los diccionarios son mutables
+-Pueden iterarsen
+
+TUPLA = ()
+LISTA = []
+DICCIONARIO = {}
+
+my_dict = {
+	'david' : 35,
+	'Erika' : 32,
+	'Jaime' : 50
+}
+
+my_dict['david']
+
+Get
+my_dict.get('David', 30)
+*Si no existe la llave especificada se arroja el valor que indicamos
+
+Borrar elemento
+del my_dict['llave']
+
+Iterar sobre llaves, valores o todo
+llaves:
+for llave in my_dict.keys():
+	print(llave)
+valores:
+for valor in my_dict.values():
+	print(valor)
+llave y valor
+for llave, valor in my_dict.items():
+	print(llave, valor)
+
+Los dictionary comprehension tienen una sintaxis muy similar a los list comprehension:
+{llave : valor for variable in <iterable>}, y para ponerle un “filtro” se puede agregar un if después de el iterable para solo utilizar aquellos objetos que cumplan dicha condición
+
+
+PRUEBAS DE CAJA NEGRA
+-Se basan en la especificacion de la funcion o el programa
+-Prueba inputs y valida outputs
+-Unit testing o integration testing
+
+Las pruebas de caja negra se basan en la especificación de la función o el programa, aquí debemos probas sus inputs y validar los outputs. Se llama caja negra por que no necesitamos saber necesariamente los procesos internos del programa, solo contrastar sus resultados.
+
+Estos tipos de pruebas son muy importantes para 2 tipos de test:
+
+Unit testing: se realizan pruebas a cada uno de los módulos para determinar su correcto funcionamiento.
+
+Integration testing: es cuando vemos que todos los módulos funcionan entre sí.
+
+Es una buena práctica realizar los test antes de crear tus lineas de código, esto es por que cualquier cambio que se realice a futuro los test estaran incorporados para determinar si los cambios cumplen lo esperado.
+
+
+PRUEBAS DE CAJA DE CRISTAL
+-Se basan en el flujo del programa
+-Prueba todos los caminos posibles de una función. Ramificaciones, bucles for y while, recursion
+-Regression testing o mocks (Cuando se encuentra un bug después de que la aplicación ya está en produccion)
+
+
+DEBUGGING
+-No te molestes con el debugger, aprende a utilizar el print statement
+-Estudia los datos disponibles
+-Utiliza los datos para crear hipotesis y experimentos(Metodo cientifico)
+-Ten una mente abierta, si entendieras el programa, probablemente no habrían bugs
+-Lleva un registro de lo que has tratado, preferentemente en la forma de tests
+
+Diseño de experimentos
+-Debugear es un proceso de busqueda, cada prueba debe acotar el espacio de busqueda
+-Busqueda binaria con print statement
+
+Errores comunes
+-Encuentra a los sospechosos comunes
+-En lugar de preguntarte por que un programa no funciona, preguntate por que está funcionando de esta manera
+-Es posible que el bug no se encuentre donde crees que está
+-Explicale el problema a otra persona, de preferencia que no tenga contexto
+-Lleva un registro de lo que has tratado, preferentemente en la forma de tests
+-Vete a dormir
+
+EXCEPCIONES
+Manejo
+-Son muy comunes en la programación, no tienen nada de excepcional
+-Las excepciones de python normalmente se relacionan con errores de semantica
+-Se pueden crear excepciones propias
+-Cuando una excepción no se maneja(unhandled exception), el programa termina en error
+-Las excepciones se manejan con los keywords: Try. Except, Finally
+-Se pueden utilizar también para ramificar programas
+-No deben manejarse de manera silenciosa(Por ejemplo con pront statementes)
+-Para aventar tu propia excepcion utiliza el keyword raise
+
+Excepciones comunes:
+ImportError : una importación falla;
+IndexError : una lista se indexa con un número fuera de rango;
+NameError : se usa una variable desconocida ;
+SyntaxError : el código no se puede analizar correctamente
+TypeError : se llama a una función en un valor de un tipo inapropiado;
+ValueError : se llama a una función en un valor del tipo correcto, pero con un valor inapropiado
+
+AFIRMACIONES
+-Programación defensiva
+-Pueden utilizarse para verificar que los tipos sean correctos en una función
+-También sirven para debuguear

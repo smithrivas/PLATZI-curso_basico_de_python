@@ -1,0 +1,76 @@
+Instalaciones
+Python
+Cmder
+Vs code
+
+OPERADORES ARITMETICOS
++
+-
+*
+/
+// Division entera
+% Modulo
+** Potencia
+
+-Orden
+(),**,razi cuadrada, *,/,+
+
+Raiz cuadrada
+import math
+*print(math.sqrt(numero))
+*64 ** 0.5
+*pow(64, 0.5)
+
+round(variable, 5) = 5 hace referencia a la cantidad de decimales
+
+VARIABLES
+-El nombre no se puede iniciar por número
+-Siempre minuscula
+-Se separan las palabras con guion bajo mi_variable
+-AMYUSCULA = constante
+
+TIPO DE DATO
+'' = ""
+Concatenar = +
+variable*7 = se repite 7 veces
+Decimales se separan con .
+var1 += 1 incrementa
+int() = Entero
+str() = Cadena de texto
+float() = Flotante
+and, or, not
+==
+!=
+>
+<
+>=
+<=
+
+METODO
+Funcion especial para un tipo de dato
+var.upper() = Mayuscula
+capitalize = Primera letra en mayuscula
+strip = Elimina espacios al inicio y al final
+lower = Minuscula
+replace('u','a') = Remplaza letras
+replace(' ','') = elimina espacios
+variable[1] = Muestra una letra en la posición indicada
+len(variable) = Cantidad de caracteres
+variable[0:0:0] = desde donde, hasta donde, en que orden
+variable[::-1] = invierte el orden de las letras
+
+def run():
+	main()
+if __name__ == '__main__':
+	run()
+
+BUCLES
+while variable >= valor:
+	instrucciones
+	contador
+
+for contador in range(1000)
+	print(contador)
+
+FORMATO STRINGS
+print(F'Tu nombre es {variable}')
